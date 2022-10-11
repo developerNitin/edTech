@@ -14,31 +14,43 @@ export default function Navbar() {
     {
       name: "Dashboard",
       link: "/dashboard",
-      icon: <RiDashboardFill />,
+      icon: <RiDashboardFill className="h-[22px] w-[22px] mr-[10px]" />,
     },
-    { name: "Courses", link: "/courses", icon: <RiVideoFill /> },
-    { name: "Practice", link: "/practice", icon: <RiBook2Fill /> },
-    { name: "Chat", link: "/chat", icon: <RiChat1Fill /> },
+    {
+      name: "Courses",
+      link: "/courses",
+      icon: <RiVideoFill className="h-[22px] w-[22px] mr-[10px]" />,
+    },
+    {
+      name: "Practice",
+      link: "/practice",
+      icon: <RiBook2Fill className="h-[22px] w-[22px] mr-[10px]" />,
+    },
+    {
+      name: "Chat",
+      link: "/chat",
+      icon: <RiChat1Fill className="h-[22px] w-[22px] mr-[10px]" />,
+    },
   ];
 
   const [active, setActive] = useState(0);
-  const [miniNav, setMiniNav] = useState(true);
+  const [miniNav, setMiniNav] = useState(false);
 
   return (
     <div
-      className={`h-screen flex  flex-col pb-[10px] border-r-[1px] border-black ${
+      className={`h-screen flex flex-col pb-[10px] border-r-[1px] border-black ${
         miniNav && "w-[320px]"
       }`}
     >
       <div
-        className={` h-[20vh] pt-[50px] ${
+        className={`transition-animation h-[155px] pt-[30px] ${
           miniNav ? "pl-[70px]" : "pl-[20px] pr-[6px]"
         }`}
       >
         <figure className="text-[22px]">{miniNav ? "EdTech" : "Ed"}</figure>
-        <div className="flex justify-end text-[30px] mt-[20px]">
+        <div className="flex justify-end text-[30px] mt-[35px]">
           <button
-            className={`bg-black rounded-[30px] p-[3px] cursor-pointer relative z-[100] ${
+            className={` bg-black rounded-[30px] p-[3px] cursor-pointer relative z-[100] ${
               miniNav ? "mr-[-15px]" : "mr-[-21px]"
             } `}
           >
@@ -51,21 +63,21 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      <div className="">
+      <div>
         <ul>
           {navlinks.map((i, idx) => (
             <li key={idx}>
               <Link
-                className={`flex h-[46px]  items-center font-medium text-[18px] ${
+                className={`transition-animation flex h-[46px]  items-center font-medium text-[18px] ${
                   miniNav ? "pl-[70px]" : "pl-[20px] pr-[6px]"
                 }`}
                 to={i.link}
                 style={
-                  active === idx ? { borderRight: "3px solid black" } : null
+                  active === idx ? { borderRight: "3px solid black" } : { borderRight: "3px solid white" }
                 }
                 onClick={() => setActive(idx)}
               >
-                <figure className="svg">{i.icon}</figure>
+                <figure>{i.icon}</figure>
                 {miniNav && <span>{i.name}</span>}
               </Link>
             </li>
@@ -75,12 +87,12 @@ export default function Navbar() {
       <div className="mb-0 mt-auto">
         <Link
           to="/login"
-          className={`flex h-[46px] items-center font-medium text-[18px] ${
+          className={`transition-animation flex h-[46px] items-center font-medium text-[18px] ${
             miniNav ? "pl-[70px]" : "pl-[20px] pr-[6px]"
           }`}
         >
-          <figure className="svg">
-            <RiLoginBoxFill />
+          <figure>
+            <RiLoginBoxFill className="h-[22px] w-[22px] mr-[10px]" />
           </figure>
           {miniNav && <span>Log in</span>}
         </Link>

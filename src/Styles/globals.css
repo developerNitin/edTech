@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.svg svg {
-  height: 22px;
-  width: 22px;
-  margin-right: 10px;
+
+.transition-animation {
+  transition: all ease .2s;
 }
