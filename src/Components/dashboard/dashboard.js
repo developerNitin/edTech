@@ -1,10 +1,8 @@
 import HomeRightBar from "../../UI/dashbar/dashbar";
-import Navbar from "../../UI/navbar/navbar";
 
 const Dashboard = () => {
   return (
-    <div className="flex">
-      <Navbar />
+    <div className="flex-1">
       <div></div>
       <HomeRightBar />
     </div>
