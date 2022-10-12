@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .transition-animation {
-  transition: all ease .2s;
+  transition: all ease 0.2s;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url("../Assets/fonts/Montserrat.ttf");
 }

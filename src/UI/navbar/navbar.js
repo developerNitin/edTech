@@ -39,15 +39,17 @@ export default function Navbar() {
   return (
     <div
       className={`h-screen flex flex-col pb-[10px] border-r-[1px] border-black ${
-        miniNav && "w-[320px]"
+        miniNav && "w-[280px]"
       }`}
     >
       <div
         className={`transition-animation h-[155px] pt-[30px] ${
-          miniNav ? "pl-[70px]" : "pl-[20px] pr-[6px]"
+          miniNav ? "pl-[50px]" : "pl-[20px] pr-[6px]"
         }`}
       >
-        <figure className="text-[22px]">{miniNav ? "EdTech" : "Ed"}</figure>
+        <Link to="/">
+          <figure className="text-[22px]">{miniNav ? "EdTech" : "Ed"}</figure>
+        </Link>
         <div className="flex justify-end text-[30px] mt-[45px]">
           <button
             className={`bg-black rounded-[30px] p-[3px] cursor-pointer relative z-[100] ${
@@ -69,7 +71,7 @@ export default function Navbar() {
             <li key={idx}>
               <Link
                 className={`transition-animation flex h-[50px]  items-center font-medium text-[18px] ${
-                  miniNav ? "pl-[70px]" : "pl-[20px] pr-[6px]"
+                  miniNav ? "pl-[50px]" : "pl-[20px] pr-[6px]"
                 }`}
                 to={i.href}
                 style={
@@ -89,7 +91,7 @@ export default function Navbar() {
         <Link
           to="/login"
           className={`transition-animation flex h-[46px] items-center font-medium text-[18px] ${
-            miniNav ? "pl-[70px]" : "pl-[20px] pr-[6px]"
+            miniNav ? "pl-[50px]" : "pl-[20px] pr-[6px]"
           }`}
         >
           <figure>

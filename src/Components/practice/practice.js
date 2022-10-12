@@ -1,8 +1,4 @@
-
 const Practice = () => {
-  return (
-    <div>
-    </div>
-  );
+  return <div className="flex"></div>;
 };
 export default Practice;
