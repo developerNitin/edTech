@@ -89,7 +89,7 @@ export default function Navbar() {
       </div>
       <div className="mb-0 mt-auto">
         <Link
-          to="/login"
+          to="/logout"
           className={`transition-animation flex h-[46px] items-center font-medium text-[18px] ${
             miniNav ? "pl-[50px]" : "pl-[20px] pr-[6px]"
           }`}
@@ -97,7 +97,7 @@ export default function Navbar() {
           <figure>
             <RiLoginBoxFill className="h-[22px] w-[22px] mr-[10px]" />
           </figure>
-          {miniNav && <span>Log in</span>}
+          {miniNav && <span>Log out</span>}
         </Link>
       </div>
     </div>

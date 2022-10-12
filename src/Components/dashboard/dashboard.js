@@ -4,25 +4,27 @@ import { useState } from "react";
 
 const data = [
   {
-    id: "pending",
+    button: "Pending",
     heading: "Object-Oriented Programming in C++",
   },
   {
-    id: "completed",
+    button: "Completed",
     heading: "Object-Oriented Programming in java",
   },
   {
-    id: "completed",
+    button: "Completed",
     heading: "Object-Oriented Programming in java",
   },
 ];
 
+const buttons = ["All", "Pending", "Completed"];
+
 const Dashboard = () => {
-  const [toggleData, setToggleData] = useState("all");
+  const [toggle, setToggle] = useState("All");
 
   return (
     <div className="flex flex-1 h-[100vh] ">
-      <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-scroll">
+      <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-auto">
         <div className="flex mt-[40px] justify-between mb-[20px]">
           <h1 className="text-[26px]">Dashboard</h1>
           <div>
@@ -47,33 +49,36 @@ const Dashboard = () => {
         </div>
         <div>
           <div>
-            <h1 className="text-[40px] mb-[25px]"> Courses</h1>
+            <h1 className="text-[40px] mb-[25px]">Courses</h1>
           </div>
           <div className="mb-[25px]">
-            <ul className="flex text-[18px] gap-[20px] ">
-              <li>
-                <button onClick={() => setToggleData("all")}>All</button>
-              </li>
-              <li>
-                <button onClick={() => setToggleData("pending")}>
-                  Pending
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setToggleData("completed")}>
-                  Completed
-                </button>
-              </li>
+            <ul className="flex text-[18px] gap-[20px]">
+              {buttons.map((i, idx) => (
+                <li key={idx}>
+                  <button
+                    style={
+                      i === toggle ? { color: "black" } : { color: "grey" }
+                    }
+                    onClick={() => setToggle(i)}
+                  >
+                    {i}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
             {data.map((i, idx) =>
-                [i.id, "all"].includes(toggleData) ? (
+              [i.button, "All"].includes(toggle) ? (
                 <div
-                  className="h-[180px] border-[1px] border-black mb-[20px] p-[30px]"
+                  className="flex h-[180px] border-[1px] border-black mb-[20px]"
                   key={idx}
                 >
-                  <p>{i.heading}</p>
+                  <div className="border-[1px] w-[350px] border-r-black"></div>
+                  <div className="p-[30px] flex flex-col justify-center">
+                    <p className="text-[14px] mb-[20px]">Programming  •  Oct 12, 2022.</p>
+                    <p className="text-[28px]">{i.heading}</p>
+                  </div>
                 </div>
               ) : null
             )}

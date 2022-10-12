@@ -7,13 +7,13 @@ const Dashboard = lazy(() => import("./Components/dashboard/dashboard"));
 const Courses = lazy(() => import("./Components/courses/courses"));
 const Practice = lazy(() => import("./Components/practice/practice"));
 const Chat = lazy(() => import("./Components/chat/chat"));
-const Login = lazy(() => import("./Components/authentication/login/login"));
+const Logout = lazy(() => import("./Components/authentication/logout/logout"));
 
 function App() {
   const [isNavbarToggled, setIsNavbarToggle] = useState(false);
   const location = useLocation();
   useEffect(() => {
-    setIsNavbarToggle(!["/", "/login", "/signin"].includes(location.pathname));
+    setIsNavbarToggle(!["/", "/logout", "/signin"].includes(location.pathname));
   }, [location]);
   return (
     <div className="flex font-[Montserrat] leading-none">
@@ -25,7 +25,7 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/chat" element={<Chat />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </Suspense>
     </div>
