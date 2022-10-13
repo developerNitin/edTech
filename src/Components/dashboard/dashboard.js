@@ -28,8 +28,8 @@ const Dashboard = () => {
         <div className="flex mt-[40px] justify-between mb-[20px]">
           <h1 className="text-[26px]">Dashboard</h1>
           <div>
-            <form className="flex h-[40px] border-[1px] border-black">
-              <input className="w-[250px] border-r-0"></input>
+            <form className="flex h-[40px]">
+              <input className="px-[15px] w-[230px] border-[1px] border-black"></input>
               <button className="w-[40px] bg-black">
                 <RiSearch2Line className="mx-auto my-auto fill-white" />
               </button>
@@ -71,13 +71,15 @@ const Dashboard = () => {
             {data.map((i, idx) =>
               [i.button, "All"].includes(toggle) ? (
                 <div
-                  className="flex h-[180px] border-[1px] border-black mb-[20px]"
+                  className="flex min-h-[180px] border-[1px] border-black mb-[20px]"
                   key={idx}
                 >
                   <div className="border-[1px] w-[350px] border-r-black"></div>
                   <div className="p-[30px] flex flex-col justify-center">
-                    <p className="text-[14px] mb-[20px]">Programming  •  Oct 12, 2022.</p>
-                    <p className="text-[28px]">{i.heading}</p>
+                    <p className="text-[14px] mb-[20px]">
+                      Programming • Oct 12, 2022.
+                    </p>
+                    <p className="text-[28px] leading-[35px]">{i.heading}</p>
                   </div>
                 </div>
               ) : null

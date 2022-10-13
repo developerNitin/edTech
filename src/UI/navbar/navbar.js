@@ -1,34 +1,39 @@
 import { Link, useHref } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
-  RiDashboardFill,
-  RiVideoFill,
-  RiChat1Fill,
-  RiLoginBoxFill,
-  RiBook2Fill,
-  RiArrowDropRightLine,
+  RiDashboardFill as DashboardIcon,
+  RiVideoFill as VideoIcon,
+  RiChat1Fill as ChatIcon,
+  RiLoginBoxFill as LoginIcon,
+  RiBook2Fill as BookIcon,
+  RiArrowDropRightLine as DoropRightIcon,
+  RiAccountCircleFill as AccountIcon,
 } from "react-icons/ri";
+
+const Icon = ({ e }) => (
+  <>{React.cloneElement(e, { className: "h-[22px] w-[22px] mr-[10px]" })}</>
+);
 
 const navlinks = [
   {
     name: "Dashboard",
-    href: "/dashboard",
-    icon: <RiDashboardFill className="h-[22px] w-[22px] mr-[10px]" />,
+    icon: <Icon e={<DashboardIcon />} />,
   },
   {
     name: "Courses",
-    href: "/courses",
-    icon: <RiVideoFill className="h-[22px] w-[22px] mr-[10px]" />,
+    icon: <Icon e={<VideoIcon />} />,
   },
   {
     name: "Practice",
-    href: "/practice",
-    icon: <RiBook2Fill className="h-[22px] w-[22px] mr-[10px]" />,
+    icon: <Icon e={<BookIcon />} />,
   },
   {
     name: "Chat",
-    href: "/chat",
-    icon: <RiChat1Fill className="h-[22px] w-[22px] mr-[10px]" />,
+    icon: <Icon e={<ChatIcon />} />,
+  },
+  {
+    name: "Account",
+    icon: <Icon e={<AccountIcon />} />,
   },
 ];
 
@@ -56,7 +61,7 @@ export default function Navbar() {
               miniNav ? "mr-[-15px]" : "mr-[-21px]"
             } `}
           >
-            <RiArrowDropRightLine
+            <DoropRightIcon
               onClick={() => setMiniNav(!miniNav)}
               className={`transition ease-linear delay-[.2s] fill-white w-[22px] h-[22px] ${
                 miniNav && "rotate-180"
@@ -67,24 +72,26 @@ export default function Navbar() {
       </div>
       <div>
         <ul>
-          {navlinks.map((i, idx) => (
-            <li key={idx}>
-              <Link
-                className={`transition-animation flex h-[50px]  items-center font-medium text-[18px] ${
-                  miniNav ? "pl-[50px]" : "pl-[20px] pr-[6px]"
-                }`}
-                to={i.href}
-                style={
-                  path === i.href
-                    ? { borderRight: "3px solid black" }
-                    : { borderRight: "3px solid white" }
-                }
-              >
-                <figure>{i.icon}</figure>
-                {miniNav && <span>{i.name}</span>}
-              </Link>
-            </li>
-          ))}
+          {navlinks.map((i, idx) => {
+            return (
+              <li key={idx}>
+                <Link
+                  className={`transition-animation flex h-[50px]  items-center font-medium text-[18px] ${
+                    miniNav ? "pl-[50px] pr-[30px]" : "pl-[20px] pr-[6px]"
+                  }`}
+                  to={i.name}
+                  style={
+                    path === "/" + i.name
+                      ? { borderRight: "3px solid black" }
+                      : { borderRight: "3px solid white" }
+                  }
+                >
+                  <figure>{i.icon}</figure>
+                  {miniNav && <span>{i.name}</span>}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className="mb-0 mt-auto">
@@ -95,7 +102,7 @@ export default function Navbar() {
           }`}
         >
           <figure>
-            <RiLoginBoxFill className="h-[22px] w-[22px] mr-[10px]" />
+            <LoginIcon className="h-[22px] w-[22px] mr-[10px]" />
           </figure>
           {miniNav && <span>Log out</span>}
         </Link>
