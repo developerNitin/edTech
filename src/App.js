@@ -12,8 +12,9 @@ const Logout = lazy(() => import("./Components/authentication/logout/logout"));
 function App() {
   const [isNavbarToggled, setIsNavbarToggle] = useState(false);
   const location = useLocation();
+  const navbar = ["/dashboard", "/courses", "/practice", "/chat", "/account"];
   useEffect(() => {
-    setIsNavbarToggle(!["/", "/logout", "/signin"].includes(location.pathname));
+    setIsNavbarToggle(navbar.includes(location.pathname));
   }, [location]);
   return (
     <div className="flex font-[Montserrat] leading-none">

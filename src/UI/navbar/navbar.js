@@ -6,33 +6,37 @@ import {
   RiChat1Fill as ChatIcon,
   RiLoginBoxFill as LoginIcon,
   RiBook2Fill as BookIcon,
-  RiArrowDropRightLine as DoropRightIcon,
+  RiArrowDropRightLine as DropRightIcon,
   RiAccountCircleFill as AccountIcon,
 } from "react-icons/ri";
 
-const Icon = ({ e }) => (
-  <>{React.cloneElement(e, { className: "h-[22px] w-[22px] mr-[10px]" })}</>
-);
+const Icon = ({ e }) =>
+  React.cloneElement(e, { className: "h-[22px] w-[22px] mr-[10px]" });
 
 const navlinks = [
   {
     name: "Dashboard",
+    href: "/dashboard",
     icon: <Icon e={<DashboardIcon />} />,
   },
   {
     name: "Courses",
+    href: "/courses",
     icon: <Icon e={<VideoIcon />} />,
   },
   {
     name: "Practice",
+    href: "/practice",
     icon: <Icon e={<BookIcon />} />,
   },
   {
     name: "Chat",
+    href: "/chat",
     icon: <Icon e={<ChatIcon />} />,
   },
   {
     name: "Account",
+    href: "/account",
     icon: <Icon e={<AccountIcon />} />,
   },
 ];
@@ -61,7 +65,7 @@ export default function Navbar() {
               miniNav ? "mr-[-15px]" : "mr-[-21px]"
             } `}
           >
-            <DoropRightIcon
+            <DropRightIcon
               onClick={() => setMiniNav(!miniNav)}
               className={`transition ease-linear delay-[.2s] fill-white w-[22px] h-[22px] ${
                 miniNav && "rotate-180"
@@ -79,9 +83,9 @@ export default function Navbar() {
                   className={`transition-animation flex h-[50px]  items-center font-medium text-[18px] ${
                     miniNav ? "pl-[50px] pr-[30px]" : "pl-[20px] pr-[6px]"
                   }`}
-                  to={i.name}
+                  to={i.href}
                   style={
-                    path === "/" + i.name
+                    path === i.href
                       ? { borderRight: "3px solid black" }
                       : { borderRight: "3px solid white" }
                   }
