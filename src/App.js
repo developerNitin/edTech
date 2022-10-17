@@ -16,14 +16,17 @@ function App() {
   useEffect(() => {
     setIsNavbarToggle(navbar.includes(location.pathname));
   }, [location]);
+
+  const [miniNav, setMiniNav] = useState(false);
+
   return (
     <div className="flex font-[Montserrat] leading-none">
-      {isNavbarToggled && <Navbar />}
+      {isNavbarToggled && <Navbar miniNav={miniNav} setMiniNav={setMiniNav} />}
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses" element={<Courses columns={miniNav} />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/logout" element={<Logout />} />

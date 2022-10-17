@@ -1,5 +1,5 @@
-import HomeRightBar from "../../UI/dashbar/dashbar";
-import { RiSearch2Line } from "react-icons/ri";
+import HomeRightBar from "./ui/dashbar";
+import Header from "../../UI/header/header";
 import { useState } from "react";
 
 const data = [
@@ -25,17 +25,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1 h-[100vh] ">
       <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-auto">
-        <div className="flex mt-[40px] justify-between mb-[20px]">
-          <h1 className="text-[26px]">Dashboard</h1>
-          <div>
-            <form className="flex h-[40px]">
-              <input className="px-[15px] w-[230px] border-[1px] border-black"></input>
-              <button className="w-[40px] bg-black">
-                <RiSearch2Line className="mx-auto my-auto fill-white" />
-              </button>
-            </form>
-          </div>
-        </div>
+        <Header heading="Dashboard" />
         <div className="border-[1px] border-black p-[30px] flex items-center mb-[30px]">
           <div className="w-[50%]">
             <h1 className="mb-[20px] text-[24px] font-medium">
@@ -48,9 +38,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div>
-          <div>
-            <h1 className="text-[40px] mb-[25px]">Courses</h1>
-          </div>
+          <h1 className="text-[40px] mb-[25px]">Courses</h1>
           <div className="mb-[25px]">
             <ul className="flex text-[18px] gap-[20px]">
               {buttons.map((i, idx) => (

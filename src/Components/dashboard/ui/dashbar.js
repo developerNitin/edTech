@@ -52,24 +52,26 @@ const DashBar = () => {
     startDateArray[i] = previousMonthLastDate - prefixDate + i + 1;
   }
 
-  //component
-  const Calendar = ({ children }) => <div>{children}</div>;
+  //Schedule components
+  const Schedule = ({ children }) => <div className="p-[10px]">{children}</div>;
   const DateCell = (props) => {
-    return <div
-      className={`text-[16px] h-[45px] text-center flex justify-center flex-col items-center after:w-[5px] after:h-[5px] after:rounded-[10px] ${props.style} ${props.className}`}
-    >
-      <span
-        className={`h-[32px] w-[32px] mb-[4px] flex items-center justify-center hover:bg-black hover:text-white cursor-pointer rounded-[30px] ${props.spanClassName}`}
+    return (
+      <div
+        className={`text-[16px] h-[45px] text-center flex justify-center flex-col items-center after:w-[5px] after:h-[5px] after:rounded-[10px] ${props.style} ${props.className}`}
       >
-        {props.children}
-      </span>
-    </div>
+        <span
+          className={`h-[32px] w-[32px] mb-[4px] flex items-center justify-center hover:bg-black hover:text-white cursor-pointer rounded-[30px] ${props.spanClassName}`}
+        >
+          {props.children}
+        </span>
+      </div>
+    );
   };
 
   return (
-    <div className="w-[400px] border-l-[1px] border-black p-[40px]">
-      <Calendar>
-        <div className="flex mb-[15px] mx-[8px] justify-between items-center">
+    <div className="w-[400px] border-l-[1px] border-black p-[30px]">
+      <Schedule>
+        <div className="mb-[15px] mx-[8px]">
           <h1 className="text-[22px]">Schedule</h1>
         </div>
         <div className="flex mx-[12px] mb-[5px] items-center justify-between">
@@ -141,7 +143,7 @@ const DashBar = () => {
             </DateCell>
           ))}
         </div>
-      </Calendar>
+      </Schedule>
     </div>
   );
 };

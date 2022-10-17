@@ -39,11 +39,10 @@ const navlinks = [
     href: "/account",
     icon: <Icon e={<AccountIcon />} />,
   },
-];
+];  const classname = "grid-cols-3";
 
-export default function Navbar() {
+export default function Navbar({miniNav, setMiniNav}) {
   let path = useHref();
-  const [miniNav, setMiniNav] = useState(false);
 
   return (
     <div
