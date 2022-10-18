@@ -2,7 +2,7 @@ const Coursebar = ({
   filterTopic,
   setFilterTopic,
   filterLevel,
-  setFilterLevel
+  setFilterLevel,
 }) => {
   const filter = [
     {
@@ -18,7 +18,6 @@ const Coursebar = ({
       buttonName: ["Beginner", "Intermediate", "Expert"],
     },
   ];
-
 
   return (
     <div className="w-[400px] border-l-[1px] border-black p-[40px]">

@@ -23,7 +23,7 @@ const Dashboard = () => {
   const [toggle, setToggle] = useState("All");
 
   return (
-    <div className="flex flex-1 h-[100vh] ">
+    <div className="flex flex-1 h-[100vh]">
       <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-scroll">
         <Header heading="Dashboard" />
         <div className="border-[1px] border-black p-[30px] flex items-center mb-[30px]">

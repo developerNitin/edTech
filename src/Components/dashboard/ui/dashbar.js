@@ -53,7 +53,7 @@ const DashBar = () => {
   }
 
   //Schedule components
-  const Schedule = ({ children }) => <div className="p-[10px]">{children}</div>;
+  const Schedule = ({ children }) => <div>{children}</div>;
   const DateCell = (props) => {
     return (
       <div
@@ -69,12 +69,12 @@ const DashBar = () => {
   };
 
   return (
-    <div className="w-[400px] border-l-[1px] border-black p-[30px]">
+    <div className=" w-[400px] p-[40px] min-h-full border-l-[1px] border-black ">
       <Schedule>
-        <div className="mb-[15px] mx-[8px]">
+        <div className="mb-[20px] mx-[8px]">
           <h1 className="text-[22px]">Schedule</h1>
         </div>
-        <div className="flex mx-[12px] mb-[5px] items-center justify-between">
+        <div className="flex mx-[12px] mb-[20px] items-center justify-between">
           <div className="flex items-center ml-[-10px] gap-[10px]">
             <button onClick={() => setYear(--year)} className="text-[22px]">
               <DropLeftIcon />
@@ -102,7 +102,7 @@ const DashBar = () => {
         </div>
         <div className="grid grid-cols-7">
           {["sun", "mon", "tue", "wed", "thr", "fri", "sat"].map((i) => (
-            <DateCell key={i} className="text-[14px]">
+            <DateCell key={i} className="text-[13px] font-bold">
               {i}
             </DateCell>
           ))}
