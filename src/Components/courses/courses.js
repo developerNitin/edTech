@@ -8,6 +8,7 @@ const data = [
     Rating: 2,
     Newest: 10,
     topic: "C++",
+    level: "Beginner",
     heading: "Learn Programming in C++",
   },
   {
@@ -15,6 +16,7 @@ const data = [
     Rating: 10,
     Newest: 5,
     topic: "React",
+    level: "Intermediate",
     heading: "Lern Programming in react",
   },
   {
@@ -22,32 +24,31 @@ const data = [
     Rating: 20,
     Newest: 20,
     topic: "Java",
+    level: "Expert",
     heading: "Lrn Programming in java",
   },
+  {
+    Trending: 40,
+    Rating: 30,
+    Newest: 4,
+    topic: "Python",
+    level: "Intermediate",
+    heading: "Learn Programming in python",
+  },
 ];
+
 const buttons = ["Trending", "Rating", "Newest"];
 
 const Courses = ({ columns }) => {
   const [toggle, setToggle] = useState("Trending");
-  const [filter, setFilter] = useState([]);
+  const [filterTopic, setFilterTopic] = useState([]);
+  const [filterLevel, setFilterLevel] = useState([]);
 
-  switch (toggle) {
-    case "Trending":
-      data.sort((a, b) => a.Trending - b.Trending);
-      break;
-    case "Rating":
-      data.sort((a, b) => a.Rating - b.Rating);
-      break;
-    case "Newest":
-      data.sort((a, b) => a.Newest - b.Newest);
-      break;
-    default:
-      break;
-  }
+  data.sort((a, b) => b[toggle] - a[toggle]);
 
   return (
     <div className="flex flex-1 h-[100vh]">
-      <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-auto">
+      <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-scroll">
         <Header heading="Courses" />
         <div className="border-[1px] border-black p-[30px] flex items-center mb-[30px]">
           <div className="w-[50%]">
@@ -68,9 +69,7 @@ const Courses = ({ columns }) => {
               {buttons.map((i, idx) => (
                 <li key={idx}>
                   <button
-                    style={
-                      i === toggle ? { color: "black" } : { color: "grey" }
-                    }
+                    className={i !== toggle ? "text-[gray]" : "underline"}
                     onClick={() => setToggle(i)}
                   >
                     {i}
@@ -85,22 +84,13 @@ const Courses = ({ columns }) => {
             }`}
           >
             {data.map((i, idx) =>
-              filter.includes(i.topic) ? (
+              (filterTopic.includes(i.topic) || filterTopic.length === 0) &&
+              (filterLevel.includes(i.level) || filterLevel.length === 0) ? (
                 <div key={idx} className="border border-black">
                   <div className="border-b-[1px] h-[200px] border-black"></div>
                   <div className="p-[20px]">
                     <p className="text-[14px] mb-[10px] leading-[25px]">
-                      Programming • Oct 12, 2022.
-                    </p>
-                    <p className="text-[20px] leading-[25px]">{i.heading}</p>
-                  </div>
-                </div>
-              ) : filter.length === 0 ? (
-                <div key={idx} className="border border-black">
-                  <div className="border-b-[1px] h-[200px] border-black"></div>
-                  <div className="p-[20px]">
-                    <p className="text-[14px] mb-[10px] leading-[25px]">
-                      Programming • Oct 12, 2022.
+                      Programming • {i.level} • Oct 12, 2022.
                     </p>
                     <p className="text-[20px] leading-[25px]">{i.heading}</p>
                   </div>
@@ -110,8 +100,15 @@ const Courses = ({ columns }) => {
           </div>
         </div>
       </div>
-      <Coursebar filter={filter} setFilter={setFilter} />
+      <Coursebar
+        filterTopic={filterTopic}
+        setFilterTopic={setFilterTopic}
+        filterLevel={filterLevel}
+        setFilterLevel={setFilterLevel}
+      />
     </div>
   );
 };
 export default Courses;
+
+//&&
