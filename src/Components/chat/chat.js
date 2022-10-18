@@ -1,4 +1,4 @@
 const Chat = () => {
-  return <div></div>;
+  return <div>Coming soon</div>;
 };
 export default Chat;

@@ -7,6 +7,7 @@ const Dashboard = lazy(() => import("./Components/dashboard/dashboard"));
 const Courses = lazy(() => import("./Components/courses/courses"));
 const Practice = lazy(() => import("./Components/practice/practice"));
 const Chat = lazy(() => import("./Components/chat/chat"));
+const Account = lazy(()=>import("./Components/account/account"))
 const Logout = lazy(() => import("./Components/authentication/logout/logout"));
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/courses" element={<Courses columns={miniNav} />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
       </Suspense>

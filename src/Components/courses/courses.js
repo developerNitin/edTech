@@ -4,25 +4,46 @@ import { useState } from "react";
 
 const data = [
   {
+    Trending: 10,
+    Rating: 2,
+    Newest: 10,
+    topic: "C++",
     heading: "Learn Programming in C++",
-    view: 10,
   },
   {
-    heading: "Learn Programming in react",
-    view: 100,
+    Trending: 100,
+    Rating: 10,
+    Newest: 5,
+    topic: "React",
+    heading: "Lern Programming in react",
   },
   {
-    heading: "Learn Programming in java",
-    view: 50,
+    Trending: 50,
+    Rating: 20,
+    Newest: 20,
+    topic: "Java",
+    heading: "Lrn Programming in java",
   },
 ];
-const buttons = ["All", "Trending", "Popular"];
+const buttons = ["Trending", "Rating", "Newest"];
 
 const Courses = ({ columns }) => {
-  const [toggle, setToggle] = useState("All");
-  const sortDate = (props) => {
-    setToggle(props);
-  };
+  const [toggle, setToggle] = useState("Trending");
+  const [filter, setFilter] = useState([]);
+
+  switch (toggle) {
+    case "Trending":
+      data.sort((a, b) => a.Trending - b.Trending);
+      break;
+    case "Rating":
+      data.sort((a, b) => a.Rating - b.Rating);
+      break;
+    case "Newest":
+      data.sort((a, b) => a.Newest - b.Newest);
+      break;
+    default:
+      break;
+  }
 
   return (
     <div className="flex flex-1 h-[100vh]">
@@ -41,13 +62,16 @@ const Courses = ({ columns }) => {
         <div className="pb-[50px]">
           <div className="mb-[25px]">
             <ul className="flex text-[18px] gap-[20px]">
+              <li>
+                <span className="font-bold ">Sorted by:</span>
+              </li>
               {buttons.map((i, idx) => (
                 <li key={idx}>
                   <button
                     style={
                       i === toggle ? { color: "black" } : { color: "grey" }
                     }
-                    onClick={() => sortDate(i)}
+                    onClick={() => setToggle(i)}
                   >
                     {i}
                   </button>
@@ -60,21 +84,33 @@ const Courses = ({ columns }) => {
               columns ? "grid-cols-2" : "grid-cols-3"
             }`}
           >
-            {data.map((i, idx) => (
-              <div key={idx} className="border border-black">
-                <div className="border-b-[1px] h-[200px] border-black"></div>
-                <div className="p-[20px]">
-                  <p className="text-[14px] mb-[10px] leading-[25px]">
-                    Programming • Oct 12, 2022.
-                  </p>
-                  <p className="text-[20px] leading-[25px]">{i.heading}</p>
+            {data.map((i, idx) =>
+              filter.includes(i.topic) ? (
+                <div key={idx} className="border border-black">
+                  <div className="border-b-[1px] h-[200px] border-black"></div>
+                  <div className="p-[20px]">
+                    <p className="text-[14px] mb-[10px] leading-[25px]">
+                      Programming • Oct 12, 2022.
+                    </p>
+                    <p className="text-[20px] leading-[25px]">{i.heading}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ) : filter.length === 0 ? (
+                <div key={idx} className="border border-black">
+                  <div className="border-b-[1px] h-[200px] border-black"></div>
+                  <div className="p-[20px]">
+                    <p className="text-[14px] mb-[10px] leading-[25px]">
+                      Programming • Oct 12, 2022.
+                    </p>
+                    <p className="text-[20px] leading-[25px]">{i.heading}</p>
+                  </div>
+                </div>
+              ) : null
+            )}
           </div>
         </div>
       </div>
-      <Coursebar />
+      <Coursebar filter={filter} setFilter={setFilter} />
     </div>
   );
 };

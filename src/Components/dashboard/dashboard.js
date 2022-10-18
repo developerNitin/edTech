@@ -4,15 +4,15 @@ import { useState } from "react";
 
 const data = [
   {
-    button: "Pending",
+    status: "Pending",
     heading: "Object-Oriented Programming in C++",
   },
   {
-    button: "Completed",
+    status: "Completed",
     heading: "Object-Oriented Programming in java",
   },
   {
-    button: "Completed",
+    status: "Completed",
     heading: "Object-Oriented Programming in java",
   },
 ];
@@ -57,7 +57,7 @@ const Dashboard = () => {
           </div>
           <div>
             {data.map((i, idx) =>
-              [i.button, "All"].includes(toggle) ? (
+              [i.status, "All"].includes(toggle) ? (
                 <div
                   className="flex min-h-[180px] border-[1px] border-black mb-[20px]"
                   key={idx}
