@@ -2,7 +2,7 @@ import { RiSearch2Line } from "react-icons/ri";
 
 const Header = (props) => {
   return (
-    <div className="flex mt-[40px] justify-between mb-[20px]">
+    <div className="flex mt-[40px] justify-between mb-[20px] ">
       <h1 className="text-[26px]">{props.heading}</h1>
       <div>
         <form className="flex h-[40px]">

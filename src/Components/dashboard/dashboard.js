@@ -1,35 +1,21 @@
-import HomeRightBar from "./ui/dashbar";
+import HomeRightBar from "./dashbar/dashbar";
 import Header from "../../UI/header/header";
 import { useState } from "react";
-
-const data = [
-  {
-    status: "Pending",
-    heading: "Object-Oriented Programming in C++",
-  },
-  {
-    status: "Completed",
-    heading: "Object-Oriented Programming in java",
-  },
-  {
-    status: "Completed",
-    heading: "Object-Oriented Programming in java",
-  },
-];
+import { Link } from "react-router-dom";
 
 const buttons = ["All", "Pending", "Completed"];
 
-const Dashboard = () => {
+const Dashboard = ({ data }) => {
   const [toggle, setToggle] = useState("All");
 
   return (
-    <div className="flex flex-1 h-[100vh]">
-      <div className="px-[40px] flex-1 max-w-[1200px] mx-auto overflow-y-scroll">
+    <div className="flex flex-1 h-[100vh] overflow-y-scroll">
+      <div className="px-[40px] pr-[440px] flex-1 max-w-[1600px] mx-auto ">
         <Header heading="Dashboard" />
         <div className="border-[1px] border-black p-[30px] flex items-center mb-[30px]">
           <div className="w-[50%]">
             <h1 className="mb-[20px] text-[24px] font-medium">
-              Hello, Angela!
+              Wecome Back, Angela!
             </h1>
             <p className="text-[16px] leading-[25px]">
               Learn anytime, anywhere. Boost your skills with flexible, online
@@ -55,17 +41,28 @@ const Dashboard = () => {
           </div>
           <div>
             {data.map((i, idx) =>
-              [i.status, "All"].includes(toggle) ? (
+              [i.status, "All"].includes(toggle) && i.isEnrolled ? (
                 <div
-                  className="flex min-h-[180px] border-[1px] border-black mb-[20px]"
+                  className="flex border-[1px] border-black mb-[20px]"
                   key={idx}
                 >
-                  <div className="border-[1px] w-[350px] border-r-black"></div>
-                  <div className="p-[30px] flex flex-col justify-center">
+                  <div className="border-[1px] w-[300px] border-r-black"></div>
+                  <div className="p-[30px] w-[70%] flex flex-col justify-center">
                     <p className="text-[14px] mb-[20px]">
-                      Programming • Oct 12, 2022.
+                      Programming • {i.owner} • Oct 12, 2022.
                     </p>
-                    <p className="text-[28px] leading-[35px]">{i.heading}</p>
+                    <Link
+                      to={
+                        "/" +
+                        i.owner +
+                        "/" +
+                        i.heading.toLowerCase().replaceAll(" ", "-") +
+                        "/learn"
+                      }
+                      className="text-[28px] leading-[35px] hover:underline"
+                    >
+                      {i.heading}
+                    </Link>
                   </div>
                 </div>
               ) : null
