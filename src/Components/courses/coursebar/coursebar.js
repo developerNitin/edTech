@@ -25,7 +25,7 @@ const Coursebar = ({
   ];
 
   return (
-    <div className="w-[400px] h-screen fixed right-[15px] bg-white border-l-[1px] p-[40px] overflow-y-auto">
+    <div className="w-[400px] h-screen fixed right-0 bg-white border-l-[1px] p-[40px] overflow-y-auto">
       <div className="mb-[30px]">
         <h1 className="text-[22px] flex gap-[10px]">
           <FilterIcon /> Filter

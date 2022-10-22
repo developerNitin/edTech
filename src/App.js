@@ -2,11 +2,11 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Suspense, lazy, useEffect, useState } from "react";
 import data from "./data";
 
-const Navbar = lazy(() => import("./UI/navbar/navbar"));
+const Navbar = lazy(() => import("./UI/sideNavbar/navbar"));
 const Home = lazy(() => import("./Components/home/home"));
 const Dashboard = lazy(() => import("./Components/dashboard/dashboard"));
 const Courses = lazy(() => import("./Components/courses/courses"));
-const Course = lazy(() => import("./Components/course/course"));
+const Learn = lazy(() => import("./Components/learn/learn"));
 const Practice = lazy(() => import("./Components/practice/practice"));
 const Chat = lazy(() => import("./Components/chat/chat"));
 const Account = lazy(() => import("./Components/account/account"));
@@ -15,7 +15,7 @@ const Logout = lazy(() => import("./Components/authentication/logout/logout"));
 function App() {
   const [isNavbarToggled, setIsNavbarToggle] = useState(false);
   const location = useLocation();
-  const navbar = ["/", "/logout","/login"];
+  const navbar = ["/dashboard", "/courses", "/practice", "/chat", "/account"];
   useEffect(() => {
     setIsNavbarToggle(navbar.includes(location.pathname));
   }, [location]);
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="flex font-[Montserrat] leading-none">
-      {!isNavbarToggled && <Navbar miniNav={miniNav} setMiniNav={setMiniNav} />}
+      {isNavbarToggled && <Navbar miniNav={miniNav} setMiniNav={setMiniNav} />}
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -45,7 +45,7 @@ function App() {
                     i.heading.toLowerCase().replaceAll(" ", "-") +
                     "/learn"
                   }
-                  element={<Course data={i} />}
+                  element={<Learn data={i} />}
                 />
               )
           )}

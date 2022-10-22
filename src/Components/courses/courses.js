@@ -13,8 +13,9 @@ const Courses = ({ columns, data }) => {
   data.sort((a, b) => b[toggle] - a[toggle]);
 
   return (
-    <div className="flex flex-1 h-[100vh] overflow-y-scroll">
-      <div className="px-[40px] flex-1 max-w-[1600px] mx-auto pr-[440px]">
+    <div className="flex flex-1 h-[100vh]">
+      <div className="px-[40px] flex flex-1 max-w-[1600px] mx-auto pr-[440px]">
+      <div>
         <Header heading="Courses" />
         <div className="pb-[50px]">
           <div className="mb-[25px]">
@@ -64,13 +65,14 @@ const Courses = ({ columns, data }) => {
             )}
           </div>
         </div>
-      </div>
-      <Coursebar
+      </div>   <Coursebar
         filterTopic={filterTopic}
         setFilterTopic={setFilterTopic}
         filterLevel={filterLevel}
         setFilterLevel={setFilterLevel}
       />
+      </div>
+   
     </div>
   );
 };

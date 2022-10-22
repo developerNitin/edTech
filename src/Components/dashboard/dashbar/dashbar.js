@@ -72,7 +72,7 @@ const DashBar = () => {
   };
 
   return (
-    <div className="w-[400px] bg-white h-screen fixed right-[15px] border-l-[1px] overflow-y-auto">
+    <div className="w-[400px] bg-white h-screen fixed right-0 border-l-[1px] overflow-y-auto">
       <Schedule>
         <div className="mb-[20px] mx-[8px] ">
           <h1 className="text-[22px] flex gap-[10px]">
