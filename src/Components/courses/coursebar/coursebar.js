@@ -1,7 +1,8 @@
 import {
   RiCheckFill as Check,
-  RiFilter3Fill as FilterIcon,
+  // RiFilter3Fill as FilterIcon,
 } from "react-icons/ri";
+import {FiFilter as FilterIcon} from "react-icons/fi";
 
 const Coursebar = ({
   filterTopic,
@@ -25,22 +26,22 @@ const Coursebar = ({
   ];
 
   return (
-    <div className="w-[400px] h-screen fixed right-0 bg-white border-l-[1px] p-[40px] overflow-y-auto">
-      <div className="mb-[30px]">
+    <div className="w-[400px] h-screen fixed right-0 bg-white border-l-[1px] overflow-y-auto">
+      <div className="mb-[30px] p-[40px] pb-0">
         <h1 className="text-[22px] flex gap-[10px]">
-          <FilterIcon /> Filter
+          <FilterIcon className="text-[20px]" /> Filter
         </h1>
       </div>
       {filter.map(({ heading, state, setState, buttonName }) => (
         <div
           key={heading}
-          className="grid-inline mb-[20px] pb-[15px] border-b-[1px]"
+          className="grid-inline mb-[20px] pb-[15px] pr-[40px] ml-[40px] border-b-[1px]"
         >
           <h1 className="mb-[20px]">{heading}</h1>
           {buttonName.map((i, idx) => {
             return (
               <button
-                className={`px-[12px] py-[5px] border bg-gray-50 rounded-[20px] mr-[10px] text-[16px] mb-[10px] ${
+                className={`px-[12px] py-[5px] border bg-gray-50 rounded-[5px] mr-[10px] text-[16px] mb-[10px] ${
                   state.includes(i) ? "border-black" : null
                 }`}
                 onClick={() =>

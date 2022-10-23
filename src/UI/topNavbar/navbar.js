@@ -8,7 +8,7 @@ const Icon = ({ e }) =>
 
 const Navbar = (props) => {
   return (
-    <div className="flex fixed w-full z-10 bg-white items-center h-[60px] px-[30px] border-b-[1px]">
+    <div className="flex fixed w-full z-[100] bg-white items-center h-[60px] px-[30px] border-b-[1px]">
       <ul className="flex items-center w-full">
         <li className="">
           <Link to="/dashboard">Dashboard</Link>

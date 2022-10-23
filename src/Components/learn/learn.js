@@ -2,9 +2,11 @@ import {
   RiArrowDownSLine,
   RiPlayCircleFill as PlayFill,
   RiPlayCircleLine as PlayLine,
+  RiCloseFill as CloseIcon,
+  RiArrowLeftLine as ArrowIcon,
 } from "react-icons/ri";
 import Navbar from "../../UI/topNavbar/navbar";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Learn = ({ data }) => {
   const [toggle, setToggle] = useState([0]);
@@ -14,9 +16,16 @@ const Learn = ({ data }) => {
   const [video, setVideo] = useState(data.course[0].videos[0].video);
   // let [time, setTime] = useState([]);
   const [toggleBar, setToggleBar] = useState("Overview");
+  const [videoNav, setVideoNav] = useState(true);
   const navbar = ["Overview", "Notes", "Q&A", "Announcements", "Review"];
   let num = 0;
   // let num2 = 0;
+
+  const videoref = useRef();
+
+  // useEffect(() => {
+  //   console.log(videoref.current.duration);
+  // }, [videoref]);
 
   return (
     <>
@@ -37,14 +46,15 @@ const Learn = ({ data }) => {
       })} */}
       <div className="w-full">
         <Navbar heading={data.heading} />
-        <div className="flex h-screen mr-[350px]">
-          <div className="flex-1 pt-[60px] border-r-[1px]">
-            <div className="flex justify-center items-center h-[550px]">
+        <div className={`flex h-screen ${videoNav && "mr-[350px]"} `}>
+          <div className={`flex-1 pt-[60px] ${videoNav && "border-r-[1px]"}`}>
+            <div className={`flex justify-center items-center h-[550px] ${!videoNav && "h-[650px]"}`}>
               <video
                 className="w-[100%] h-[100%] bg-[#1C1D1F] cursor-pointer"
                 src={video}
                 type="video/mp4"
                 controls
+                ref={videoref}
               />
             </div>
             <div className="">
@@ -70,14 +80,30 @@ const Learn = ({ data }) => {
               className={`py-[30px] px-[30px] ${
                 !(toggleBar === "Overview") && "hidden"
               }`}
-            >
-            </div>
+            ></div>
           </div>
-          <div className="w-[350px] fixed right-0 h-screen text-[16px]  pb-[20px] overflow-y-auto">
-            <div className="mt-[60px] bg-white ">
-              <h1 className="font-bold py-[21px] px-[30px] border-b-[1px]">
-                Course content
-              </h1>
+          <div
+            className={`${
+              videoNav && "hidden"
+            } absolute z-10 right-0 top-[90px] overflow-hidden`}
+          >
+            <button className="bg-[#1C1D1F] hover:bg-[#353739] text-white mr-[-128px] hover:mr-0 p-[8px] flex items-center border border-[#6a6f73] border-r-0" onClick={() => setVideoNav(true)}>
+              <ArrowIcon className="text-[25px] mr-[8px]" />
+              <span>course content</span>
+            </button>
+          </div>
+          <div
+            className={`w-[350px] fixed right-0 h-screen text-[16px]  pb-[20px] overflow-y-auto ${
+              !videoNav && "hidden"
+            }`}
+          >
+            <div className="mt-[60px]  bg-white ">
+              <div className="flex items-center px-[30px] border-b-[1px] h-[60px] justify-between">
+                <h1 className="font-bold ">Course content</h1>
+                <button onClick={() => setVideoNav(false)}>
+                  <CloseIcon className="text-[24px] mr-[-2px]" />
+                </button>
+              </div>
               {data.course.map((i, IDX) => (
                 <div className="border-b-[1px]" key={IDX}>
                   <button
@@ -114,7 +140,7 @@ const Learn = ({ data }) => {
                             } hover:bg-gray-200`}
                           >
                             <span className="text-[14px]">
-                              {++num + ". " + i.topic}
+                              {`${++num}. ${i.topic}`}
                             </span>
                             <span className="text-[14px]">
                               {/* {time[num]} */}
