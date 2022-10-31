@@ -15,64 +15,64 @@ const Courses = ({ columns, data }) => {
   return (
     <div className="flex flex-1 h-[100vh]">
       <div className="px-[40px] flex flex-1 max-w-[1600px] mx-auto pr-[440px]">
-      <div>
-        <Header heading="Courses" />
-        <div className="pb-[50px]">
-          <div className="mb-[25px]">
-            <ul className="flex text-[18px] gap-[20px]">
-              <li>
-                <span className="font-bold ">Sorted by:</span>
-              </li>
-              {buttons.map((i, idx) => (
-                <li key={idx}>
-                  <button
-                    className={i !== toggle ? "text-[gray]" : "underline"}
-                    onClick={() => setToggle(i)}
-                  >
-                    {i}
-                  </button>
+        <div className="w-full">
+          <Header heading="Courses" />
+          <div className="pb-[50px]">
+            <div className="mb-[25px]">
+              <ul className="flex text-[18px] gap-[20px]">
+                <li>
+                  <span className="font-bold ">Sorted by:</span>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div
-            className={`grid  gap-[20px] ${
-              columns ? "grid-cols-2" : "grid-cols-3"
-            }`}
-          >
-            {data.map((i, idx) =>
-              (filterTopic.includes(i.topic) || filterTopic.length === 0) &&
-              (filterLevel.includes(i.level) || filterLevel.length === 0) ? (
-                <div key={idx} className="border border-black">
-                  <div className="border-b-[1px] border-black"></div>
-                  <div className="p-[20px]">
-                    <p className="text-[14px] mb-[10px] leading-[25px]">
-                      Programming • {i.owner} • Oct 12, 2022.
-                    </p>
-                    <Link
-                      to={
-                        i.owner +
-                        "/" +
-                        i.heading.toLowerCase().replaceAll(" ", "-")
-                      }
-                      className="text-[20px] leading-[25px] hover:underline"
+                {buttons.map((i, idx) => (
+                  <li key={idx}>
+                    <button
+                      className={i !== toggle ? "text-[gray]" : "underline"}
+                      onClick={() => setToggle(i)}
                     >
-                      {i.heading}
-                    </Link>
+                      {i}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div
+              className={`grid  gap-[20px] ${
+                columns ? "grid-cols-2" : "grid-cols-3"
+              }`}
+            >
+              {data.map((i, idx) =>
+                (filterTopic.includes(i.topic) || filterTopic.length === 0) &&
+                (filterLevel.includes(i.level) || filterLevel.length === 0) ? (
+                  <div key={idx} className="border border-black">
+                    <div className="border-b-[1px] border-black"></div>
+                    <div className="p-[20px]">
+                      <p className="text-[14px] mb-[10px] leading-[25px]">
+                        Programming • {i.owner} • Oct 12, 2022.
+                      </p>
+                      <Link
+                        to={
+                          i.owner +
+                          "/" +
+                          i.heading.toLowerCase().replaceAll(" ", "-")
+                        }
+                        className="text-[20px] leading-[25px] hover:underline"
+                      >
+                        {i.heading}
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              ) : null
-            )}
+                ) : null
+              )}
+            </div>
           </div>
         </div>
-      </div>   <Coursebar
-        filterTopic={filterTopic}
-        setFilterTopic={setFilterTopic}
-        filterLevel={filterLevel}
-        setFilterLevel={setFilterLevel}
-      />
+        <Coursebar
+          filterTopic={filterTopic}
+          setFilterTopic={setFilterTopic}
+          filterLevel={filterLevel}
+          setFilterLevel={setFilterLevel}
+        />
       </div>
-   
     </div>
   );
 };

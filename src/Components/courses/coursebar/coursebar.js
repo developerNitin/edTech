@@ -26,7 +26,7 @@ const Coursebar = ({
   ];
 
   return (
-    <div className="w-[400px] h-screen fixed right-0 bg-white border-l-[1px] overflow-y-auto">
+    <div className="w-[400px] h-screen z-50 fixed right-0 bg-white border-l-[1px] overflow-y-auto">
       <div className="mb-[30px] p-[40px] pb-0">
         <h1 className="text-[22px] flex gap-[10px]">
           <FilterIcon className="text-[20px]" /> Filter
@@ -41,7 +41,7 @@ const Coursebar = ({
           {buttonName.map((i, idx) => {
             return (
               <button
-                className={`px-[12px] py-[5px] border bg-gray-50 rounded-[5px] mr-[10px] text-[16px] mb-[10px] ${
+                className={`px-[12px] py-[5px] border bg-[#f7f7f7] rounded-[3px] mr-[10px] text-[16px] mb-[10px] ${
                   state.includes(i) ? "border-black" : null
                 }`}
                 onClick={() =>

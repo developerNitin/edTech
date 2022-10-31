@@ -9,9 +9,9 @@ const Dashboard = ({ data }) => {
   const [toggle, setToggle] = useState("All");
 
   return (
-    <div className="flex flex-1">
-      <div className="px-[40px] flex h-screen flex-1 max-w-[1600px] mx-auto pr-[440px]">
-        <div className="w-full h-screen ">
+    <div className="flex flex-1 ">
+      <div className="px-[40px] flex min-h-screen flex-1 max-w-[1600px] mx-auto pr-[440px]">
+        <div className="w-full">
           <Header heading="Dashboard" />
           <div className="border-[1px] border-black p-[30px] flex items-center mb-[30px]">
             <div className="w-[50%]">
