@@ -10,7 +10,10 @@ const Learn = lazy(() => import("./Components/learn/learn"));
 const Practice = lazy(() => import("./Components/practice/practice"));
 const Chat = lazy(() => import("./Components/chat/chat"));
 const Account = lazy(() => import("./Components/account/account"));
-const Logout = lazy(() => import("./Components/authentication/logout/logout"));
+const Login = lazy(() => import("./Components/authentication/login/login"));
+const ExploreCourses = lazy(() =>
+  import("./Components/home/exploreCourses/exploreCourses")
+);
 
 function App() {
   const [isNavbarToggled, setIsNavbarToggle] = useState(false);
@@ -28,6 +31,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/explore-courses" element={<ExploreCourses data={data} columns={miniNav}/>} />
           <Route path="/dashboard" element={<Dashboard data={data} />} />
           <Route
             path="/courses"
@@ -51,7 +55,7 @@ function App() {
           )}
           <Route path="/chat" element={<Chat />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Suspense>
     </div>

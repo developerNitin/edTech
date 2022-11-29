@@ -83,7 +83,7 @@ export default function Navbar({ miniNav, setMiniNav }) {
           <ul>
             {navlinks.map((i, idx) => {
               return (
-                <li>
+                <li key={idx}>
                   <Link
                     className={`transition-animation border-r-[3px] w-full flex h-[50px] items-center font-medium text-[18px] ${[
                       miniNav ? "pl-[50px] pr-[30px]" : "flex justify-center",
