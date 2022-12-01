@@ -11,6 +11,7 @@ const Practice = lazy(() => import("./Components/practice/practice"));
 const Chat = lazy(() => import("./Components/chat/chat"));
 const Account = lazy(() => import("./Components/account/account"));
 const Login = lazy(() => import("./Components/authentication/login/login"));
+const Signup = lazy(() => import("./Components/authentication/signup/signup"));
 const ExploreCourses = lazy(() =>
   import("./Components/home/exploreCourses/exploreCourses")
 );
@@ -23,7 +24,7 @@ function App() {
     setIsNavbarToggle(navbar.includes(location.pathname));
   }, [location]);
 
-  const [miniNav, setMiniNav] = useState(false);
+  const [miniNav, setMiniNav] = useState(true);
 
   return (
     <div className="flex font-[Montserrat] leading-none">
@@ -31,7 +32,10 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/explore-courses" element={<ExploreCourses data={data} columns={miniNav}/>} />
+          <Route
+            path="/explore-courses"
+            element={<ExploreCourses data={data} columns={miniNav} />}
+          />
           <Route path="/dashboard" element={<Dashboard data={data} />} />
           <Route
             path="/courses"
@@ -56,6 +60,7 @@ function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/account" element={<Account />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </Suspense>
     </div>

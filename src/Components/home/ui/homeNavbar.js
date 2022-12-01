@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const HomeNavbar = ({border}) => {
+const HomeNavbar = ({border, bgColor}) => {
   return (
   <div className="flex w-full h-[80px]">
-    <nav className={`flex w-full px-[50px]  justify-between ${border && 'border-b-[1px]'} fixed  h-[80px] bg-white z-[100] top-0 items-center`}>
+    <nav className={`flex w-full px-[50px]  justify-between ${border && 'border-b-[1px]'} fixed  h-[80px] ${bgColor && 'bg-white'} z-[100] top-0 items-center`}>
       <ul className="flex w-[200px] gap-[30px]">
         <li>
           <Link to="/">Home</Link>
@@ -13,6 +13,9 @@ const HomeNavbar = ({border}) => {
         </li>
         <li>
           <Link to="/explore-courses">Courses</Link>
+        </li>
+         <li>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
       </ul>
       <div>

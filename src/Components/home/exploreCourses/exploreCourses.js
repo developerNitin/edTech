@@ -16,7 +16,7 @@ const ExploreCourses = ({ data }) => {
 
   return (
     <div className="flex flex-col w-full">
-      <HomeNavbar border={true} />
+      <HomeNavbar border={true} bgColor={true}/>
       <div className="flex flex-1 h-[100vh]">
         <div className="px-[40px] flex flex-1 w-full mx-auto pl-[440px]">
           <ExploreCoursebar

@@ -4,7 +4,6 @@ import {
   RiDashboardFill as DashboardIcon,
   RiVideoFill as VideoIcon,
   RiChat1Fill as ChatIcon,
-  RiLoginBoxFill as LoginIcon,
   RiBook2Fill as BookIcon,
   RiLogoutBoxFill as LogoutIcon,
   RiArrowDropRightLine as DropRightIcon,
