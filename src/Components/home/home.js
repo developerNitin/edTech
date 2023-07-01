@@ -20,7 +20,7 @@ const Home = () => {
           <div className="w-[400px]">
             <p className="text-[16px] leading-[19px]">
               Speed Up The Skill Acquisition Process By Finding Unlimited
-              Courses That Matches Your Niche
+              Courses That Matches Your Niche.
             </p>
             <button className="mt-[20px] text-[18px] border border-black p-[20px]">
               <a href="/signup">Enroll now</a>
